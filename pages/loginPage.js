@@ -8,9 +8,9 @@ export class LoginPage {
     this.checkBox = page.locator("#terms");
     this.signInButton = page.getByRole("button" , { name : "Sign In "});
 }
-async Login(){
-    await this.usernameInput.fill(process.env.APP_USERNAME);
-    await this.passwordInput.fill(process.env.APP_PASSWORD);
+async login(username,password){
+    await this.usernameInput.fill(username);
+    await this.passwordInput.fill(password);
     await this.dropdown.click();
      await this.page.keyboard.press('ArrowDown');
     await this.page.keyboard.press('ArrowDown');
