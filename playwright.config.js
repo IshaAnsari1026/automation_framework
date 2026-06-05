@@ -1,9 +1,9 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+import { defineConfig } from '@playwright/test';
 
-const { defineConfig } = require('@playwright/test');
+dotenv.config();
 
-module.exports = defineConfig({
-
+export default defineConfig({
   testDir: './tests',
 
   timeout: 30000,
@@ -11,7 +11,6 @@ module.exports = defineConfig({
   retries: 1,
 
   use: {
-    browserName: process.env.BROWSER,
     headless: false,
     launchOptions: {
       slowMo: 1000
@@ -19,8 +18,25 @@ module.exports = defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'on-first-retry',
-    baseURL: process.env.BASE_URL
+    baseURL: process.env.BASE_URL,
+     storageState: 'auth/auth.json',
   },
+
+  projects: [
+  {
+    name: 'setup',
+    testMatch: /.*auth\.setup\.spec\.js/
+  },
+
+  {
+    name: 'chromium',
+    dependencies: ['setup'],
+    use: {
+      browserName: 'chromium',
+      storageState: './auth/auth.json'
+    }
+  }
+],
 
   reporter: [
     ['html'],

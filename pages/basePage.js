@@ -1,4 +1,4 @@
-export class BasePage {
+ export class BasePage {
 
     constructor(page){
         this.page = page;
