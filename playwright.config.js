@@ -40,6 +40,9 @@ export default defineConfig({
 
   reporter: [
   ['html'],
-  ['allure-playwright']
+  ['allure-playwright', {
+    detail: true,
+    suiteTitle: false
+  }]
 ],
 });

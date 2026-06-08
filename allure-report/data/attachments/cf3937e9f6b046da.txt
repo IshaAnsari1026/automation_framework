@@ -1,2 +1,0 @@
-Are u sure to login as a user?
-URL after login: https://automationpracticehub.com/

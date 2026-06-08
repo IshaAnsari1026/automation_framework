@@ -1,2 +1,0 @@
-Launching Application
-Test Execution Completed
