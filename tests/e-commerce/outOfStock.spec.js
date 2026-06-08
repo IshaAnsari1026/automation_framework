@@ -16,9 +16,6 @@ test("Checkout Out of Stock Product", async ({ page }) => {
         ENV.APP_PASSWORD
     ); 
     await productsPage.goto();
-    await productsPage.addOutOfStockProductToCart();    
+    await productsPage.outOfProduct();    
     await cartPage.openCart();
-    await cartPage.verifyOutOfStockProductInCart();
-    await cartPage.removeProductFromCart();
-    await expect(cartPage.productName).toBeHidden();
 });

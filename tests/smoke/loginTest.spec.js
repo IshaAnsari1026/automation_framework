@@ -1,6 +1,7 @@
-import { test, expect } from '../../fixtures/pageFixture';
+import { test, expect } from '../../fixtures/pageFixtures';
 import { ENV } from '../../config/envConfig.js';
 import loginData from '../../test-data/loginData.json' with { type: 'json' };
+import { LoginPage } from '../../pages/loginPage.js';
 
 
 test.beforeEach(async ({ page }) => {
@@ -26,7 +27,7 @@ test.describe("Login Functionality Tests" , () => {
  });
 
  test("Invalid Login Test", async({page})=>{
-       const loginPage = new LoginPage(page);
+      const loginPage = new LoginPage(page);    
       await page.goto(ENV.BASE_URL);
         await loginPage.login(
             loginData.data.invalid_username,

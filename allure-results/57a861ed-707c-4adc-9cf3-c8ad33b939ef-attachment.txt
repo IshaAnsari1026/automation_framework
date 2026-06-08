@@ -1,0 +1,13 @@
+Opening Login Page
+Are u sure to login as a user?
+Login Done
+Opening Products Page
+Clicking + button
++ button clicked
+Increase quantity
+Item added successfully🤗 !
+Test Completed
+1
+[ 'Cart ' ]
+Cart Text: Cart 
+This item is currently unavailable☹️ !

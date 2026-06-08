@@ -39,7 +39,7 @@ export default defineConfig({
 ],
 
   reporter: [
-    ['html'],
-    ['list']
-  ]
+  ['html'],
+  ['allure-playwright']
+],
 });
