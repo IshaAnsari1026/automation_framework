@@ -49,14 +49,17 @@ async getCartCount() {
     }
     
 
-    async outOfProduct(){
-        await this.outOfStockProduct.click();
-        await this.addToCartButton.nth(2).click();
-        await this.page.waitForSelector(".text-gray-800");
-        const message = await this.popUpMessage.nth(2).textContent();
-        console.log(message);
-    }
+   async outOfProduct(){
 
+    await this.outOfStockProduct.click();
+
+    await this.addToCartButton.nth(2).click();
+
+    await this.page.waitForSelector(".text-gray-800");
+
+    return await this.popUpMessage.nth(2).textContent();
+
+}
 
       
 }

@@ -13,7 +13,7 @@ export class CartPage {
     }
 
     async verifyProductInCart(){
-        const productName = await this.productName.textContent();
+        const productName = await this.productName.first().textContent();
         console.log(productName);
     }
 

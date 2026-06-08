@@ -21,41 +21,53 @@ export class CheckoutPage{
         this.continueShoppingButton = page.getByRole('button', {name : 'Continue Shopping'});
 
     }
-    async checkout(){
-        await this.checkoutButton.click();
-    }
+    async checkout() {
 
-    async fillCheckoutForm(firstName, lastName, country, state, city, address, phone) {
-        await this.firstNameInput.fill(firstName);
-        await this.lastNameInput.fill(lastName);
-        await this.countryInput.selectOption(country);
-        await this.stateInput.selectOption(state);
-        await this.cityInput.selectOption(city);
-        await this.addressInput.fill(address);
-        await this.phoneInput.fill(phone);
-        await this.checkbox1.click();
-        await this.checkbox2.click();
-        console.log(
-    "Continue Enabled:",
-    await this.continueButton.isEnabled()
-);
-        await this.continueButton.click();
-        await expect(this.page).toHaveURL("https://automationpracticehub.com/review/");;
-        await expect(this.orderItemVerify).toBeVisible();  
-        await this.placeOrderButton.click();
-        await expect(this.page).toHaveURL("https://automationpracticehub.com/success/");
-        await expect(this.message).toHaveText("Order Placed 🎉");
-        await this.browse.click();
-        await expect(this.page).toHaveURL("https://automationpracticehub.com/products/");
-        await this.myOrders.click();
-        await expect(this.page).toHaveURL("https://automationpracticehub.com/orders/");
-        await expect(this.page.locator(".rounded-2xl")).toContainText("iPhone");
-        await this.continueShoppingButton.click();
-        await expect(this.page).toHaveURL("https://automationpracticehub.com/products/");
+    console.log("Before checkout:", this.page.url());
+    
 
+    await this.checkoutButton.click();
+    console.log("URL after continue:", this.page.url());
+    await this.page.waitForTimeout(3000);
 
-    }
+    console.log("After checkout:", this.page.url());
+}  
+    
+async fillCheckoutForm(firstName, lastName, country, state, city, address, phone) {
+    await this.firstNameInput.fill(firstName);
+    await this.lastNameInput.fill(lastName);
+    await this.countryInput.selectOption(country);
+    await this.stateInput.selectOption(state);
+    await this.cityInput.selectOption(city);
+    await this.addressInput.fill(address);
+    await this.phoneInput.fill(phone);
+    await this.checkbox1.click();
+    await this.checkbox2.click();
 
+    await this.continueButton.click();
+
+    await expect(this.page).toHaveURL(
+        "https://automationpracticehub.com/review/"
+    );
+}async placeOrder() {
+
+    await expect(this.orderItemVerify).toBeVisible();
+
+    await this.placeOrderButton.click();
+
+    await expect(this.page).toHaveURL(
+        "https://automationpracticehub.com/success/"
+    );
+
+    await expect(this.message)
+        .toHaveText("Order Placed 🎉");
+}
+async verifyOrderHistory() {
+
+    await expect(this.page.locator(".rounded-2xl"))
+        .toContainText("iPhone");
 
 }
-    
+    }
+
+
