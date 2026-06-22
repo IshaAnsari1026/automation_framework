@@ -61,8 +61,14 @@ async fillCheckoutForm(firstName, lastName, country, state, city, address, phone
 
     await expect(this.message)
         .toHaveText("Order Placed 🎉");
+
+    await this.browse.click();
+
+    await expect(this.page).toHaveURL("https://automationpracticehub.com/products/");
 }
 async verifyOrderHistory() {
+
+    await this.myOrders.click();
 
     await expect(this.page.locator(".rounded-2xl"))
         .toContainText("iPhone");

@@ -27,5 +27,6 @@ async login(username,password){
    
     await this.checkBox.check();
     await this.signInButton.click();
+    
         }
 }

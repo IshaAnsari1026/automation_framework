@@ -25,10 +25,12 @@ test("Checkout Product", async ({ page }) => {
     await checkoutPage.checkout();
     await checkoutPage.fillCheckoutForm("Isha", "Ansari", "India" , "Uttar Pradesh" , "Sahāranpur" , " Hazira Sarai ", "1234567890");
     await checkoutPage.placeOrder();
-    await checkoutPage.verifyOrderHistory();
-
+    
     await checkoutPage.placeOrder();
-     const confirmationMessage = await checkoutPage.getConfirmationMessage();
+    const confirmationMessage = await checkoutPage.getConfirmationMessage();
     console.log("Confirmation Message:", confirmationMessage);
     expect(confirmationMessage).toContain("Thank you for your order!");
+    await checkoutPage.verifyOrderHistory();
+
+   
 });
